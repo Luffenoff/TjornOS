@@ -1,4 +1,5 @@
 use core::ptr;
+use crate::system::devices::DiskError;
 
 #[repr(C)]
 pub struct AtaDisk {

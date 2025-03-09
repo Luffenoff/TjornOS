@@ -1,5 +1,5 @@
-use crate::graphics::Compositor;
-use crate::window::WindowManager;
+use crate::graphics::renderer::Compositor;
+use crate::gui::window_system::WindowManager;
 
 pub struct WorkspaceManager {
     workspaces: Vec<Workspace>,

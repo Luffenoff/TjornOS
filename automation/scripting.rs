@@ -1,4 +1,4 @@
-use crate::security::ScriptSandbox;
+use crate::security::sandbox::ScriptSandbox;
 
 pub struct ScriptingSystem {
     interpreters: HashMap<String, Interpreter>,

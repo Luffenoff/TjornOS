@@ -1,5 +1,6 @@
-use crate::graphics::{Compositor, WindowManager};
-use crate::themes::ThemeManager;
+use crate::graphics::renderer::Compositor;
+use crate::gui::window_system::WindowManager;
+use crate::gui::theme::ThemeManager;
 
 pub struct DesktopEnvironment {
     window_manager: WindowManager,
