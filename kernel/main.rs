@@ -2,7 +2,7 @@
 #![no_main]
 
 mod vga_buffer;
-mod memory;
+mod memory { include!("memory/memory.rs"); }
 mod interrupts;
 
 use memory::MemoryManager;

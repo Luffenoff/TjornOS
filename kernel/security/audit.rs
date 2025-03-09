@@ -1,5 +1,6 @@
 use chrono::{DateTime, Utc};
 use spin::Mutex;
+use crate::security::SecurityEvent;
 
 pub struct SecurityAuditor {
     log: Mutex<AuditLog>,

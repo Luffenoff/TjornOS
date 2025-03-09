@@ -1,3 +1,6 @@
+use crate::hardware::cpu::CPUEmulator;
+use crate::hardware::memory::MemoryEmulator;
+
 pub struct Emulator {
     cpu: CPUEmulator,
     memory: MemoryEmulator,

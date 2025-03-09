@@ -1,3 +1,6 @@
+use crate::terminal::terminal::Terminal;
+use crate::development::git::GitIntegration;
+
 pub struct IDE {
     project_manager: ProjectManager,
     editor: Editor,

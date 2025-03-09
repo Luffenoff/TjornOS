@@ -1,5 +1,5 @@
-use crate::network::SecureDownloader;
-use crate::package::PackageManager;
+use crate::network::security::SecureDownloader;
+use crate::package::manager::PackageManager;
 
 pub struct AppStore {
     package_manager: PackageManager,

@@ -1,4 +1,4 @@
-use crate::security::Permission;
+use crate::security::security::Permission;
 
 pub struct SystemAPI {
     process_api: ProcessAPI,

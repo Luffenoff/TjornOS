@@ -1,4 +1,4 @@
-use crate::virtualization::Sandbox;
+use crate::security::sandbox::Sandbox;
 
 pub struct WineSubsystem {
     sandbox: Sandbox,

@@ -1,6 +1,8 @@
 use alloc::vec::Vec;
 use spin::RwLock;
 use crate::memory::PageTable;
+use crate::memory::VirtualMemory;
+use crate::cpu::VirtualCPU;
 
 pub struct Hypervisor {
     vms: RwLock<Vec<VirtualMachine>>,
