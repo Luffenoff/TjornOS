@@ -25,7 +25,6 @@ pub struct TjornAI {
 
 impl TjornAI {
     pub fn new() -> Self {
-        // Инициализация компонентов
         Self {
             ml_engine: MLEngine::new(),
             neural_processor: NeuralProcessor::new(),
@@ -37,7 +36,6 @@ impl TjornAI {
     }
 
     pub async fn process_task(&self, task: AITask) -> Result<AIResponse, AIError> {
-        // Обработка задачи с использованием всех подсистем
         let context = self.knowledge_base.get_context(&task)?;
         let features = self.neural_processor.extract_features(&task, &context)?;
         let decision = self.decision_maker.make_decision(features)?;
