@@ -23,4 +23,4 @@ EOF
 # Создаем ISO образ
 grub-mkrescue -o target/x86_64-unknown-none/release/tjornos.iso build/iso
 
-echo "Bootable image created successfully" 
+echo "Bootable image created successfully"

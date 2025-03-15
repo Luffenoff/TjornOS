@@ -135,6 +135,21 @@ gdb-protocol = { version = "0.1", optional = true }
 perf-event = { version = "0.4", optional = true }
 tracy-client = { version = "0.15", optional = true }
 
+bootloader = { version = "0.9", features = ["map_physical_memory"] }
+x86_64 = "0.14"
+uart_16550 = "0.2"
+pic8259 = "0.10"
+pc-keyboard = "0.5"
+spin = "0.9"
+volatile = "0.4"
+
+tjorn-core = { path = "crates/tjorn-core" }
+tjorn-memory = { path = "crates/tjorn-memory" }
+tjorn-security = { path = "crates/tjorn-security" }
+tjorn-fs = { path = "crates/tjorn-fs" }
+tjorn-network = { path = "crates/tjorn-network" }
+tjorn-gui = { path = "crates/tjorn-gui" }
+
 [features]
 default = ["gui", "audio", "network", "security"]
 gui = ["vulkan", "opengl"]
@@ -203,7 +218,7 @@ debug = true
 debug-assertions = true
 overflow-checks = true
 lto = false
-panic = "unwind"
+panic = "abort"
 incremental = true
 codegen-units = 256
 rpath = false
@@ -232,10 +247,5 @@ codegen-units = 256
 rpath = false
 
 [workspace]
-members = [
-    "crates/tjorn-vision",
-    "crates/tjorn-gui",
-    "crates/tjorn-ai",
-    "crates/tjorn-core",
-]
+members = ["crates/*"]
 resolver = "2"

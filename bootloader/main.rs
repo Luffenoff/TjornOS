@@ -1,9 +1,10 @@
 #![no_std]
 #![no_main]
 
-use core::panic::PanicInfo;
-use crate::memory::MemoryMap;
 use crate::hardware::ACPI;
+use crate::memory::MemoryMap;
+use bootloader::{entry_point, BootInfo};
+use core::panic::PanicInfo;
 
 // Константы для VGA-буфера
 const VGA_BUFFER: *mut u8 = 0xb8000 as *mut u8;
@@ -21,40 +22,24 @@ pub struct BootInfo {
     kernel_base: u64,
 }
 
-#[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
-    print_string("ПАНИКА: Загрузчик остановлен");
-    loop {}
-}
+entry_point!(kernel_main);
 
-#[no_mangle]
-pub extern "C" fn bootloader_main() -> ! {
-    // Инициализация базового оборудования
+fn kernel_main(boot_info: &'static BootInfo) -> ! {
+    // Очистка экрана
+    clear_screen();
+
+    println!("TjornOS Bootloader v0.1.0");
+    println!("Initializing system...");
+
+    // Базовая инициализация
     init_cpu();
-    init_memory_map();
-    
-    // Загрузка ядра
-    let kernel_binary = load_kernel()?;
-    verify_kernel_signature(&kernel_binary)?;
-    
-    // Подготовка окружения
-    let boot_info = prepare_boot_info();
-    
-    // Переход к ядру
-    jump_to_kernel(kernel_binary, boot_info);
-    
-    loop {}
-}
+    init_memory(boot_info);
 
-fn init_cpu() {
-    // Проверка поддержки необходимых функций CPU
-    check_cpu_features();
-    
-    // Настройка защищенного режима
-    enable_protected_mode();
-    
-    // Настройка длинного режима
-    enable_long_mode();
+    // Загрузка ядра
+    println!("Loading kernel...");
+    load_kernel();
+
+    loop {}
 }
 
 fn clear_screen() {
@@ -88,4 +73,29 @@ fn load_gdt() {
 
 fn jump_to_kernel(kernel_binary: &[u8], boot_info: BootInfo) {
     // Переход к точке входа ядра
-} 
+}
+
+fn init_cpu() {
+    // Проверка поддержки необходимых функций CPU
+    check_cpu_features();
+
+    // Настройка защищенного режима
+    enable_protected_mode();
+
+    // Настройка длинного режима
+    enable_long_mode();
+}
+
+fn init_memory(boot_info: &'static BootInfo) {
+    // Инициализация карты памяти
+}
+
+fn load_kernel() {
+    // Загрузка ядра в память
+}
+
+#[panic_handler]
+fn panic(_info: &PanicInfo) -> ! {
+    print_string("ПАНИКА: Загрузчик остановлен");
+    loop {}
+}

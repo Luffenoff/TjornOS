@@ -1330,6 +1330,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "bootloader"
+version = "0.9.30"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8a9c8b93781debeb5bc44a12adc4be812aa9feb659d60eeafcd7e9bedb549561"
+
+[[package]]
 name = "box_drawing"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6464,6 +6470,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "pc-keyboard"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5c6f2d937e3b8d63449b01401e2bae4041bc9dd1129c2e3e0d239407cf6635ac"
+
+[[package]]
 name = "peeking_take_while"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6569,6 +6581,15 @@ checksum = "6e5201d76c6786a8770f7bf5da2f244aa16708708d68e7fa2a2bab440270758a"
 dependencies = [
  "bitflags 1.3.2",
  "cc",
+]
+
+[[package]]
+name = "pic8259"
+version = "0.10.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cb844b5b01db1e0b17938685738f113bfc903846f18932b378bc0eabfa40e194"
+dependencies = [
+ "x86_64",
 ]
 
 [[package]]
@@ -9291,11 +9312,107 @@ name = "tjorn-ai"
 version = "0.1.0"
 
 [[package]]
+name = "tjorn-ai-ml"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-audio"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-compression"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-containers"
+version = "0.1.0"
+
+[[package]]
 name = "tjorn-core"
 version = "0.1.0"
 
 [[package]]
+name = "tjorn-crypto"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-db"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-debug"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-drivers"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-formats"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-fs"
+version = "0.1.0"
+
+[[package]]
 name = "tjorn-gui"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-kernel"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-memory"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-monitoring"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-multimedia"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-network"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-physics"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-protocols"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-render"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-resources"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-security"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-speech"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-storage"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-text"
+version = "0.1.0"
+
+[[package]]
+name = "tjorn-virtualization"
 version = "0.1.0"
 
 [[package]]
@@ -9313,6 +9430,7 @@ dependencies = [
  "async-std",
  "bevy",
  "bincode 1.3.3",
+ "bootloader",
  "burn",
  "cgroups-rs",
  "coap",
@@ -9347,8 +9465,10 @@ dependencies = [
  "opentelemetry",
  "parking_lot",
  "pathfinder_geometry",
+ "pc-keyboard",
  "perf-event",
  "physx",
+ "pic8259",
  "pretty_assertions",
  "prometheus",
  "proptest",
@@ -9369,6 +9489,7 @@ dependencies = [
  "serde",
  "serde_json",
  "smartcore",
+ "spin 0.9.8",
  "symphonia",
  "tar",
  "tch",
@@ -9376,6 +9497,12 @@ dependencies = [
  "test-case",
  "three-d",
  "tiny-skia 0.11.4",
+ "tjorn-core",
+ "tjorn-fs",
+ "tjorn-gui",
+ "tjorn-memory",
+ "tjorn-network",
+ "tjorn-security",
  "tokenizers",
  "tokio",
  "tokio-modbus",
@@ -9387,9 +9514,11 @@ dependencies = [
  "tract-onnx",
  "tracy-client",
  "trust-dns-resolver 0.22.0",
+ "uart_16550",
  "vhost",
  "virtio-bindings",
  "vnc",
+ "volatile",
  "vosk",
  "vulkano",
  "vulkano-shaders",
@@ -9398,6 +9527,7 @@ dependencies = [
  "whisper-rs",
  "winit",
  "x509-parser",
+ "x86_64",
  "zeroize",
  "zip 0.6.6",
 ]
@@ -10240,6 +10370,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1dccffe3ce07af9386bfd29e80c0ab1a8205a2fc34e4bcd40364df902cfa8f3f"
 
 [[package]]
+name = "uart_16550"
+version = "0.2.19"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "614ff2a87880d4bd4374722268598a970bbad05ced8bf630439417347254ab2e"
+dependencies = [
+ "bitflags 1.3.2",
+ "rustversion",
+ "x86_64",
+]
+
+[[package]]
 name = "ucd-trie"
 version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -10547,6 +10688,12 @@ dependencies = [
  "flate2 0.2.20",
  "log 0.3.9",
 ]
+
+[[package]]
+name = "volatile"
+version = "0.4.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "442887c63f2c839b346c192d047a7c87e73d0689c9157b00b53dcc27dd5ea793"
 
 [[package]]
 name = "vosk"
@@ -11581,6 +11728,18 @@ dependencies = [
  "rusticata-macros",
  "thiserror 1.0.69",
  "time",
+]
+
+[[package]]
+name = "x86_64"
+version = "0.14.13"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c101112411baafbb4bf8d33e4c4a80ab5b02d74d2612331c61e8192fc9710491"
+dependencies = [
+ "bit_field",
+ "bitflags 2.9.0",
+ "rustversion",
+ "volatile",
 ]
 
 [[package]]
